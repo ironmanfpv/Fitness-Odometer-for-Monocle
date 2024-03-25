@@ -5,7 +5,7 @@ This repository is for the tracking module proof of concept for HTML. 🔥
 
 ## To run the web app
 
-- Access https://ironmanfpv.github.io/Fitness-Odometer-for-Monocle in browser.
+- Access https://ironmanfpv.github.io/Fitness-Odometer-for-Monocle/index.html in browser.
 - If you fail to load the app, check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility).
 
 - The app requires your permission to retrieve your geolocation.
