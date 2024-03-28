@@ -31,7 +31,7 @@ const startTracking = () => {
     logConsole.textContent = 'Geolocation is not supported by your browser';
   } else {
     logConsole.textContent = 'Locating ...';
-    distanceBox.textContent = '000.000';
+    distanceBox.textContent = '0.000';
 
     return navigator.geolocation.watchPosition(success, error, trackOptions);
   }
