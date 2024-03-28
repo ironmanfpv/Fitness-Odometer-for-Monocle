@@ -58,7 +58,7 @@ const drawNewSegment = (detail) => {
       path = L.polyline([
         [ latitude, longitude ],
       ], {
-        color: '#811311',
+        color: '#ee4b2b',
         bubblingMouseEvents: true
       }).addTo(map);
 
