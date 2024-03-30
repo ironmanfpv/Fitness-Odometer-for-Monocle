@@ -61,7 +61,7 @@ function handleAuthClick() {
     }
     //document.getElementById('authorize_button').innerText = 'Refresh';
     document.getElementById('signout_button').style.visibility = 'visible';
-    document.getElementById('connectBtn').style.visibility = 'hidden';
+    document.getElementById('connectBtn').style.visibility = 'visible';
     //document.getElementById('DownloadBtn').style.visibility = 'hidden';  /*visible only after connect*/
     //document.getElementById('UploadBtn').style.visibility = 'hidden';    /*visible only after connect*/
 
