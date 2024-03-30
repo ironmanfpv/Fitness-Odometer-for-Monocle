@@ -81,10 +81,7 @@ async function connect() {
         device = await navigator.bluetooth.requestDevice({
             acceptAllDevices: true
         })
-        statusMsg.innerHTML = "Monocle is Connected";
-        statusMsg.style.color = "#00CC00";
-        connectBtn.style.visibility = "hidden";
-        DisconnectBtn.style.visibility = "visible";
+        
     } 
         else {
         device = await navigator.bluetooth.requestDevice({
@@ -95,10 +92,10 @@ async function connect() {
             }],
             optionalServices: [rawDataServiceUuid]
         });
-        statusMsg.innerHTML = "Monocle is Disconnected";
-        statusMsg.style.color = "#EE4B2B";
-        connectBtn.style.visibility = "visible";
-        DisconnectBtn.style.visibility = "hidden";
+        statusMsg.innerHTML = "Monocle is Connected";
+        statusMsg.style.color = "#00CC00";
+        connectBtn.style.visibility = "hidden";
+        DisconnectBtn.style.visibility = "visible";
     }
     
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
