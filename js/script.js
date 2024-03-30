@@ -4,7 +4,7 @@ let gapiInited = false;
 let gisInited = false;
 //document.getElementById('authorize_button').style.visibility = 'hidden';
 //document.getElementById('signout_button').style.visibility = 'hidden';
-document.getElementById('connectBtn').style.visibility = 'hidden';
+document.getElementById('connectBtn').style.visibility = 'visible';
 document.getElementById('DownloadBtn').style.visibility = 'hidden';
 document.getElementById('UploadBtn').style.visibility = 'hidden';
 
