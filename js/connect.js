@@ -14,6 +14,7 @@ const ENCODER = new TextEncoder();
 const DECODER = new TextDecoder();
 const statusMsg = document.getElementById('status');
 const connectBtn = document.getElementById('connectBtn');
+const DisconnectBtn = document.getElementById('DisconnectBtn');
 
 
 //Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
@@ -91,6 +92,7 @@ async function connect() {
         statusMsg.innerHTML = "Monocle is Connected";
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
+        DisconnectBtn.style.visibility = "visible";
     }
     
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
@@ -110,6 +112,10 @@ async function connect() {
         };
         device.ongattserverdisconnected = function () {
             if (monocle.disconnected) monocle.disconnected();
+            statusMsg.innerHTML = "Monocle is Disconnected";
+            statusMsg.style.color = "#EE4B2B";
+            connectBtn.style.visibility = "visible";
+            DisconnectBtn.style.visibility = "hidden";
         };
         dfu.oncharacteristicvaluechanged = function (ev) {
             console.log("Dfu ", ev);
