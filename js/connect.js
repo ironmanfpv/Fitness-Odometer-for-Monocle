@@ -18,6 +18,8 @@ const connectBtn = document.getElementById('connectBtn');
 
 //Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
 
+/*
+
 class Bytes {
     buf = EMPTY;
     len = 0;
@@ -63,6 +65,8 @@ function transmit(channel, bytes) {
         });
     }
 } 
+
+*/
 
 var myMonocle
 async function connect() {
