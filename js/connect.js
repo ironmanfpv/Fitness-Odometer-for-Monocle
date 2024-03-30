@@ -84,7 +84,7 @@ async function connect() {
             }],
             optionalServices: [rawDataServiceUuid]
         });
-        statusMsg.innerHTML = "Device Connected";
+        statusMsg.innerHTML = "Monocle Connected";
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
     }

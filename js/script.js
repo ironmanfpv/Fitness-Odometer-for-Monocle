@@ -5,8 +5,8 @@ let gisInited = false;
 //document.getElementById('authorize_button').style.visibility = 'hidden';
 //document.getElementById('signout_button').style.visibility = 'hidden';
 document.getElementById('connectBtn').style.visibility = 'visible';
-document.getElementById('DownloadBtn').style.visibility = 'hidden';
-document.getElementById('UploadBtn').style.visibility = 'hidden';
+document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+//document.getElementById('UploadBtn').style.visibility = 'hidden';
 
 /**
  * Callback after api.js is loaded.
@@ -60,7 +60,7 @@ function handleAuthClick() {
       throw (resp);
     }
     //document.getElementById('authorize_button').innerText = 'Refresh';
-    document.getElementById('signout_button').style.visibility = 'visible';
+    document.getElementById('DisconnectBtn').style.visibility = 'hidden';
     document.getElementById('connectBtn').style.visibility = 'visible';
     //document.getElementById('DownloadBtn').style.visibility = 'hidden';  /*visible only after connect*/
     //document.getElementById('UploadBtn').style.visibility = 'hidden';    /*visible only after connect*/
@@ -89,9 +89,9 @@ function handleSignoutClick() {
     //document.getElementById('authorize_button').innerText = 'Authorize';
     //document.getElementById('signout_button').style.visibility = 'hidden';
     document.getElementById('connectBtn').style.visibility = 'visible';         
-    //document.getElementById('DownloadBtn').style.visibility = 'hidden';
+    document.getElementById('DisconnectBtn').style.visibility = 'hidden';
     //document.getElementById('UploadBtn').style.visibility = 'hidden';  
-    statusMsg.innerHTML = "Device Disconnected";
+    statusMsg.innerHTML = "Monocle Disconnected";
     statusMsg.style.color = "#FD2403";
   }
 }
