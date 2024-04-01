@@ -18,57 +18,8 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 
 DisconnectBtn.style.visibility = "hidden";
 
-//Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
-
-/*
-
-class Bytes {
-    buf = EMPTY;
-    len = 0;
-    lck = false;
-    subarray(pos, len) {
-        if (len > this.len) {
-            throw "Out of bounds";
-        }
-        return this.buf.subarray(pos, pos + len);
-    }
-    write(buf) {
-        if (this.buf.length - this.len < buf.byteLength) {
-            const old = this.buf;
-            this.buf = new Uint8Array(this.len + buf.byteLength);
-            this.buf.set(old);
-        }
-        this.buf.set(buf, this.len);
-        this.len += buf.length;
-    }
-    read(len) {
-        return this.subarray(0, Math.min(this.len, len));
-    }
-    read_lock(len) {
-        this.lck = true;
-        return this.read(len);
-    }
-    advance(len) {
-        this.buf = this.buf.subarray(len);
-        this.len -= len;
-    }
-    advance_unlock(len) {
-        this.lck = false;
-        this.advance(len);
-    }
-}
-function transmit(channel, bytes) {
-    if (bytes.len > 0 && !bytes.lck) {
-        const tmp = bytes.read_lock(MAX_MTU);
-        channel.writeValueWithoutResponse(tmp).then(() => bytes.advance_unlock(tmp.length)).catch(err => {
-            // Unlock, but rethrow
-            bytes.advance_unlock(tmp.length);
-            Promise.reject(err);
-        });
-    }
-} 
-
-*/
+import {isConnected} from "./bluetooth.js";
+import {onDisconnect} from "./main.js";
 
 var myMonocle
 async function connect() {
@@ -92,10 +43,10 @@ async function connect() {
             }],
             optionalServices: [rawDataServiceUuid]
         });
-        statusMsg.innerHTML = "Monocle is Connected";
-        statusMsg.style.color = "#00CC00";
-        connectBtn.style.visibility = "hidden";
-        DisconnectBtn.style.visibility = "visible";
+        //statusMsg.innerHTML = "Monocle is Connected";
+        //statusMsg.style.color = "#00CC00";
+        //connectBtn.style.visibility = "hidden";
+        //DisconnectBtn.style.visibility = "visible";
     }
     
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
@@ -115,10 +66,10 @@ async function connect() {
         };
         device.ongattserverdisconnected = function () {
             if (monocle.disconnected) monocle.disconnected();
-            statusMsg.innerHTML = "Monocle is disconnected";
-            statusMsg.style.color = "#EE4B2B";
-            connectBtn.style.visibility = "visible";
-            DisconnectBtn.style.visibility = "hidden";        
+            //statusMsg.innerHTML = "Monocle is disconnected";
+            //statusMsg.style.color = "#EE4B2B";
+            //connectBtn.style.visibility = "visible";
+            //DisconnectBtn.style.visibility = "hidden";        
         };
         dfu.oncharacteristicvaluechanged = function (ev) {
             console.log("Dfu ", ev);
@@ -208,8 +159,73 @@ async function connect() {
     return monocle;
 }
 
+if (isConnected()=== true){
+    statusMsg.innerHTML = "Monocle is Connected";
+    statusMsg.style.color = "#00CC00";
+    connectBtn.style.visibility = "hidden";
+    DisconnectBtn.style.visibility = "visible";
+
+}
+
+if (onDisconnect()=== true){
+    statusMsg.innerHTML = "Monocle is disconnected";
+    statusMsg.style.color = "#EE4B2B";
+    connectBtn.style.visibility = "visible";
+    DisconnectBtn.style.visibility = "hidden";
+
+}
 
 
+/********Old Data *******************/
 
+//Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
 
+/*
 
+class Bytes {
+    buf = EMPTY;
+    len = 0;
+    lck = false;
+    subarray(pos, len) {
+        if (len > this.len) {
+            throw "Out of bounds";
+        }
+        return this.buf.subarray(pos, pos + len);
+    }
+    write(buf) {
+        if (this.buf.length - this.len < buf.byteLength) {
+            const old = this.buf;
+            this.buf = new Uint8Array(this.len + buf.byteLength);
+            this.buf.set(old);
+        }
+        this.buf.set(buf, this.len);
+        this.len += buf.length;
+    }
+    read(len) {
+        return this.subarray(0, Math.min(this.len, len));
+    }
+    read_lock(len) {
+        this.lck = true;
+        return this.read(len);
+    }
+    advance(len) {
+        this.buf = this.buf.subarray(len);
+        this.len -= len;
+    }
+    advance_unlock(len) {
+        this.lck = false;
+        this.advance(len);
+    }
+}
+function transmit(channel, bytes) {
+    if (bytes.len > 0 && !bytes.lck) {
+        const tmp = bytes.read_lock(MAX_MTU);
+        channel.writeValueWithoutResponse(tmp).then(() => bytes.advance_unlock(tmp.length)).catch(err => {
+            // Unlock, but rethrow
+            bytes.advance_unlock(tmp.length);
+            Promise.reject(err);
+        });
+    }
+} 
+
+*/

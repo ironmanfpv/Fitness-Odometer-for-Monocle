@@ -35,16 +35,9 @@ const max_mtu = 100;
 export function isConnected() {
 
     if (device && device.gatt.connected) {
-        statusMsg.innerHTML = "Monocle is Connected";
-        statusMsg.style.color = "#00CC00";
-        connectBtn.style.visibility = "hidden";
-        DisconnectBtn.style.visibility = "visible";
         return true;
     }
-        statusMsg.innerHTML = "Monocle is Disconnected";
-        statusMsg.style.color = "#EE4B2B";
-        connectBtn.style.visibility = "visible";
-        DisconnectBtn.style.visibility = "hidden";
+
     return false;
 }
 
@@ -188,3 +181,10 @@ export async function transmitRawData(bytes) {
 }
 
 window.transmitRawData = transmitRawData;
+
+
+
+statusMsg.innerHTML = "Monocle is Connected";
+statusMsg.style.color = "#00CC00";
+connectBtn.style.visibility = "hidden";
+DisconnectBtn.style.visibility = "visible";
