@@ -19,7 +19,7 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 DisconnectBtn.style.visibility = "hidden";
 
 //import { isConnected } from "./bluetooth.js";
-//import { onDisconnect } from "./main.js";
+import { onDisconnect } from "./main.js";
 
 var myMonocle
 async function connect() {
@@ -46,7 +46,7 @@ async function connect() {
         statusMsg.innerHTML = "Monocle is Connected";
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
-        DisconnectBtn.style.visibility = "visible";
+        document.getElementById('DisconnectBtn').style.visibility = 'visible';
     }
     
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
@@ -66,10 +66,10 @@ async function connect() {
         };
         device.ongattserverdisconnected = function () {
             if (monocle.disconnected) monocle.disconnected();
-            statusMsg.innerHTML = "Monocle is disconnected";
-            statusMsg.style.color = "#EE4B2B";
-            connectBtn.style.visibility = "visible";
-            DisconnectBtn.style.visibility = "hidden";        
+            //statusMsg.innerHTML = "Monocle is disconnected";
+            //statusMsg.style.color = "#EE4B2B";
+            //connectBtn.style.visibility = "visible";
+            //DisconnectBtn.style.visibility = "hidden";        
         };
         dfu.oncharacteristicvaluechanged = function (ev) {
             console.log("Dfu ", ev);

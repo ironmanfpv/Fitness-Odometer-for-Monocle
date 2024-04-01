@@ -62,7 +62,13 @@ export function onDisconnect() {
     if (infoText.innerHTML.includes("Reconnect")) {
         return;
     }
-    infoText.innerHTML = "Disconnected";
+    //infoText.innerHTML = "Disconnected";
+    statusMsg.innerHTML = "Monocle is disconnected";
+    statusMsg.style.color = "#EE4B2B";
+    connectBtn.style.visibility = "visible";
+    document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+    //DisconnectBtn.style.visibility = "hidden"; 
+
 }
 
 // Always keep the test area focused when pressing buttons

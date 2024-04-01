@@ -181,10 +181,3 @@ export async function transmitRawData(bytes) {
 }
 
 window.transmitRawData = transmitRawData;
-
-
-
-statusMsg.innerHTML = "Monocle is Connected";
-statusMsg.style.color = "#00CC00";
-connectBtn.style.visibility = "hidden";
-DisconnectBtn.style.visibility = "visible";

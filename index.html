@@ -28,7 +28,7 @@
   <p>  FITNESS ODOMETER FOR MONOCLE</p>
   <p id="status">  Monocle Not Connected</p>  <!--Device connection status-->
   <button id="connectBtn" onclick="connect()">Connect!</button>        <!--Improvise a BLE connect button-->
-  <button id="DisconnectBtn" onclick="disconnected()">Disconnect</button>   <!--Improvise a BLE connect button-->
+  <button id="DisconnectBtn" onclick="disconnect()">Disconnect</button>   <!--Improvise a BLE connect button-->
   <div id="tracker"></div>
   <div class="track-control">
     <label class="switch">
@@ -60,8 +60,8 @@
 
   <!--script src="./js/script.js"></script-->           <!--Handles button and display status--> 
   <script src="./js/connect.js"></script>          <!--Connects to Bluetooth-->
-  <!--script src="./js/bluetooth.js"></script-->   <!--Connects to Bluetooth-->
-  <!--script src="./js/main.js"></script-->               
+  <script src="./js/bluetooth.js"></script>        <!--Disconnect from Bluetooth-->
+  <script src="./js/main.js"></script>             <!--onDisconnect from Bluetooth is in here--> 
   <script src="./js/config.js"></script>
   <script src="./js/tracker.js"></script>
   <script src="./js/overlay.js"></script>
