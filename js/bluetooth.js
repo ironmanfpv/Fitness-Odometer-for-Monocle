@@ -41,6 +41,8 @@ export function isConnected() {
     return false;
 }
 
+/** 
+
 export async function connect() {
 
     if (!navigator.bluetooth) {
@@ -100,14 +102,16 @@ export async function connect() {
     return Promise.resolve("repl connected");
 }
 
+***/
+
 export async function disconnect() {       
 
     if (device && device.gatt.connected) {
         await device.gatt.disconnect();
-        statusMsg.innerHTML = "Monocle is disconnected";
-        statusMsg.style.color = "#EE4B2B";
-        document.getElementById('connectBtn').style.visibility = 'visible';
-        document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+        //statusMsg.innerHTML = "Monocle is disconnected";
+        //statusMsg.style.color = "#EE4B2B";
+        //document.getElementById('connectBtn').style.visibility = 'visible';
+        //document.getElementById('DisconnectBtn').style.visibility = 'hidden';
     }
 
     // Stop transmitting data
