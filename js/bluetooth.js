@@ -41,7 +41,7 @@ export function isConnected() {
     return false;
 }
 
-/** 
+
 
 export async function connect() {
 
@@ -102,7 +102,6 @@ export async function connect() {
     return Promise.resolve("repl connected");
 }
 
-***/
 
 export async function disconnect() {       
 
