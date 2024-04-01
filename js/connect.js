@@ -164,17 +164,29 @@ if (isConnected()=== true){
     statusMsg.style.color = "#00CC00";
     connectBtn.style.visibility = "hidden";
     DisconnectBtn.style.visibility = "visible";
-
+}else{
+    statusMsg.innerHTML = "Monocle is disconnected";
+    statusMsg.style.color = "#EE4B2B";
+    connectBtn.style.visibility = "visible";
+    DisconnectBtn.style.visibility = "hidden";
 }
 
+/*** 
+{
+    statusMsg.innerHTML = "Monocle is Connected";
+    statusMsg.style.color = "#00CC00";
+    connectBtn.style.visibility = "hidden";
+    DisconnectBtn.style.visibility = "visible";
+}
+***/
+/*** 
 if (onDisconnect()=== true){
     statusMsg.innerHTML = "Monocle is disconnected";
     statusMsg.style.color = "#EE4B2B";
     connectBtn.style.visibility = "visible";
     DisconnectBtn.style.visibility = "hidden";
-
 }
-
+***/
 
 /********Old Data *******************/
 
