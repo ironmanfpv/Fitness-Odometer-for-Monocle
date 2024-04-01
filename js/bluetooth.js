@@ -100,7 +100,7 @@ export async function connect() {
     return Promise.resolve("repl connected");
 }
 
-export async function disconnect() {
+async function disconnect() {       //try without export
 
     if (device && device.gatt.connected) {
         await device.gatt.disconnect();
