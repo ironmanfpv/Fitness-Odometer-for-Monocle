@@ -100,10 +100,14 @@ export async function connect() {
     return Promise.resolve("repl connected");
 }
 
-async function disconnect() {       //try without export
+export async function disconnect() {       
 
     if (device && device.gatt.connected) {
         await device.gatt.disconnect();
+        statusMsg.innerHTML = "Monocle is disconnected";
+        statusMsg.style.color = "#EE4B2B";
+        document.getElementById('connectBtn').style.visibility = 'visible';
+        document.getElementById('DisconnectBtn').style.visibility = 'hidden';
     }
 
     // Stop transmitting data

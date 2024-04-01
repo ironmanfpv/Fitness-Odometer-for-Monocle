@@ -63,10 +63,10 @@ export function onDisconnect() {
         return;
     }
     //infoText.innerHTML = "Disconnected";
-    statusMsg.innerHTML = "Monocle is disconnected";
-    statusMsg.style.color = "#EE4B2B";
-    connectBtn.style.visibility = "visible";
-    document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+    //statusMsg.innerHTML = "Monocle is disconnected";
+    //statusMsg.style.color = "#EE4B2B";
+    //connectBtn.style.visibility = "visible";
+    //document.getElementById('DisconnectBtn').style.visibility = 'hidden';
     //DisconnectBtn.style.visibility = "hidden"; 
 
 }
