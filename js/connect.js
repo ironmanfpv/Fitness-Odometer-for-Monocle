@@ -18,8 +18,8 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 
 DisconnectBtn.style.visibility = "hidden";
 
-import {isConnected} from "./bluetooth.js";
-import {onDisconnect} from "./main.js";
+import { isConnected } from "./bluetooth.js";
+import { onDisconnect } from "./main.js";
 
 var myMonocle
 async function connect() {
@@ -40,13 +40,13 @@ async function connect() {
                 services: [replDataServiceUuid]
             }, {
                 services: [nordicDfuServiceUuid]
-            }],
+                }],
             optionalServices: [rawDataServiceUuid]
         });
-        //statusMsg.innerHTML = "Monocle is Connected";
-        //statusMsg.style.color = "#00CC00";
-        //connectBtn.style.visibility = "hidden";
-        //DisconnectBtn.style.visibility = "visible";
+        statusMsg.innerHTML = "Monocle is Connected";
+        statusMsg.style.color = "#00CC00";
+        connectBtn.style.visibility = "hidden";
+        DisconnectBtn.style.visibility = "visible";
     }
     
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
@@ -159,6 +159,8 @@ async function connect() {
     return monocle;
 }
 
+/** 
+
 if (isConnected()=== true){
     statusMsg.innerHTML = "Monocle is Connected";
     statusMsg.style.color = "#00CC00";
@@ -170,6 +172,8 @@ if (isConnected()=== true){
     connectBtn.style.visibility = "visible";
     DisconnectBtn.style.visibility = "hidden";
 }
+
+**/
 
 /*** 
 {
