@@ -18,8 +18,8 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 
 DisconnectBtn.style.visibility = "hidden";
 
-import { isConnected } from "./bluetooth.js";
-import { onDisconnect } from "./main.js";
+//import { isConnected } from "./bluetooth.js";
+//import { onDisconnect } from "./main.js";
 
 var myMonocle
 async function connect() {
