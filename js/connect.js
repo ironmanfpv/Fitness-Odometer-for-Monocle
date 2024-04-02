@@ -65,11 +65,13 @@ async function connect() {
             dfupkt
         };
         device.ongattserverdisconnected = function () {
-            if (monocle.disconnected) monocle.disconnected();
-            //statusMsg.innerHTML = "Monocle is disconnected";
-            //statusMsg.style.color = "#EE4B2B";
-            //connectBtn.style.visibility = "visible";
-            //DisconnectBtn.style.visibility = "hidden";        
+            if (monocle.disconnected) {
+            monocle.disconnected();
+            statusMsg.innerHTML = "Monocle is disconnected";
+            statusMsg.style.color = "#EE4B2B";
+            connectBtn.style.visibility = "visible";
+            DisconnectBtn.style.visibility = "hidden";
+            }        
         };
         dfu.oncharacteristicvaluechanged = function (ev) {
             console.log("Dfu ", ev);
@@ -129,10 +131,6 @@ async function connect() {
     };
     device.ongattserverdisconnected = function () {
         if (monocle.disconnected) monocle.disconnected();
-        statusMsg.innerHTML = "Monocle is disconnected";
-        statusMsg.style.color = "#EE4B2B";
-        connectBtn.style.visibility = "visible";
-        DisconnectBtn.style.visibility = "hidden"; 
     };
     let repl_str = '';
     repltx.oncharacteristicvaluechanged = event => {
