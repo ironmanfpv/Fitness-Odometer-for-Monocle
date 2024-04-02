@@ -67,10 +67,10 @@ async function connect() {
         device.ongattserverdisconnected = function () {
             if (monocle.disconnected) {
             monocle.disconnected();
-            statusMsg.innerHTML = "Monocle is disconnected";
-            statusMsg.style.color = "#EE4B2B";
-            connectBtn.style.visibility = "visible";
-            DisconnectBtn.style.visibility = "hidden";
+            //statusMsg.innerHTML = "Monocle is disconnected";
+            //statusMsg.style.color = "#EE4B2B";
+            //connectBtn.style.visibility = "visible";
+            //DisconnectBtn.style.visibility = "hidden";
             }        
         };
         dfu.oncharacteristicvaluechanged = function (ev) {
@@ -159,7 +159,10 @@ async function connect() {
     await monocle.set_raw(true);
     myMonocle = monocle
     return monocle;
+    
 }
+
+
 
 /** 
 

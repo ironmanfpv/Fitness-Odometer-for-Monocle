@@ -27,7 +27,7 @@
 <body>
   <p>  FITNESS ODOMETER FOR MONOCLE</p>
   <p id="status">  Monocle Not Connected</p>  <!--Device connection status-->
-  <button id="connectBtn" onclick="connect()">Connect!</button>        <!--Improvise a BLE connect button-->
+  <button id="module" onclick="connect()">Connect!</button>        <!--Improvise a BLE connect button-->
   <button id="DisconnectBtn" onclick="disconnect()">Disconnect</button>   <!--Improvise a BLE connect button-->
   <div id="tracker"></div>
   <div class="track-control">
@@ -59,12 +59,17 @@
   </div>
 
   <!--script src="./js/script.js"></script-->           <!--Handles button and display status--> 
-  <script src="./js/connect.js"></script>          <!--Connects to Bluetooth-->
+  <!--script src="./js/connect.js"></script-->          <!--Connects to Bluetooth-->
   <!--script src="./js/bluetooth.js"></script-->        <!--Disconnect from Bluetooth-->
   <!--script src="./js/main.js"></script-->             <!--onDisconnect from Bluetooth is in here--> 
   <script src="./js/config.js"></script>
   <script src="./js/tracker.js"></script>
   <script src="./js/overlay.js"></script>
   <script src="./js/distance.js"></script>
+
+  <!-- Import javascript -->
+  <script type="module" src="https://repl.siliconwitchery.com/js/main.js"></script>
+  <script type="module" src="https://repl.siliconwitchery.com/js/keyboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js"></script>
                     
 </body>
