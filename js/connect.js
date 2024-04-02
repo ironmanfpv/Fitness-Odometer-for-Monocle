@@ -123,7 +123,7 @@ async function connect() {
             clearInterval(this.datatask);
         },
         // Function to handle disconnection
-        disconnected() {
+        async disconnected() {
             console.log('Device disconnected');
             // Add your logic to handle disconnection here, such as notifying the user or attempting to reconnect.
             // For example:
