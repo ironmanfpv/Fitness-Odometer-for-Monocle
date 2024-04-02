@@ -1,4 +1,3 @@
-
 "use strict";
 const nordicDfuServiceUuid = 0xfe59;
 const nordicDfuControlCharacteristicUUID = '8ec90001-f315-4f60-9fb8-838830daea50';
@@ -18,9 +17,6 @@ const connectBtn = document.getElementById('connectBtn');
 const DisconnectBtn = document.getElementById('DisconnectBtn');
 
 DisconnectBtn.style.visibility = "hidden";
-
-//import { isConnected } from "./bluetooth.js";
-//import { onDisconnect } from "./main.js";
 
 var myMonocle
 async function connect() {
@@ -164,46 +160,12 @@ async function disconnected(){
     // Add your logic to handle disconnection here, such as notifying the user or attempting to reconnect.
     // For example:
     statusMsg.innerHTML = "Monocle is Disconnected";
-    statusMsg.style.color = "#FF0000";
+    statusMsg.style.color = "#EE4B2B";
     connectBtn.style.visibility = "visible";
     document.getElementById('DisconnectBtn').style.visibility = 'hidden';
 }
 
-
-/** 
-
-if (isConnected()=== true){
-    statusMsg.innerHTML = "Monocle is Connected";
-    statusMsg.style.color = "#00CC00";
-    connectBtn.style.visibility = "hidden";
-    DisconnectBtn.style.visibility = "visible";
-}else{
-    statusMsg.innerHTML = "Monocle is disconnected";
-    statusMsg.style.color = "#EE4B2B";
-    connectBtn.style.visibility = "visible";
-    DisconnectBtn.style.visibility = "hidden";
-}
-
-**/
-
-/*** 
-{
-    statusMsg.innerHTML = "Monocle is Connected";
-    statusMsg.style.color = "#00CC00";
-    connectBtn.style.visibility = "hidden";
-    DisconnectBtn.style.visibility = "visible";
-}
-***/
-/*** 
-if (onDisconnect()=== true){
-    statusMsg.innerHTML = "Monocle is disconnected";
-    statusMsg.style.color = "#EE4B2B";
-    connectBtn.style.visibility = "visible";
-    DisconnectBtn.style.visibility = "hidden";
-}
-***/
-
-/********Old Data *******************/
+/********Previous Code *******************/
 
 //Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
 
