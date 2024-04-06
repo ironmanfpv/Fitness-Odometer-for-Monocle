@@ -161,6 +161,7 @@ async function connect() {
         if (myMonocle && myMonocle.data_send) {
             // Check if formattedDistance is available in tracker.js
             if (typeof formattedDistance !== 'undefined') {
+                myMonocle.display.clear();
                 myMonocle.data_send(formattedDistance);
             }
         }
