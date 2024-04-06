@@ -18,6 +18,7 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 //The Disconnect Button is by default hidden
 DisconnectBtn.style.visibility = "hidden";
 
+
 // Call isConnected() every 3 seconds
 setInterval(isConnected, 3000);
 
@@ -170,12 +171,12 @@ async function connect() {
 // Function to send distance data
 async function sendDistanceData() {
     if (myMonocle && myMonocle.data_send) {
-        // Check if formattedDistance is available in tracker.js
-        if (typeof formattedDistance !== 'undefined') {
-            console.log("Distance to be sent:", formattedDistance); // Debugging statement
-            myMonocle.repl(formattedDistance);
+        // Check if distanceBox.textContent is available in tracker.js
+        if (typeof distanceBox.textContent!== 'undefined') {
+            console.log("Distance to be sent:", distanceBox.textContent); // Debugging statement
+            myMonocle.repl(distanceBox.textContent);
         } else {
-            console.log("formattedDistance is undefined or empty."); // Debugging statement
+            console.log("distanceBox.textContent is undefined or empty."); // Debugging statement
         }
     } else {
         console.log("myMonocle or myMonocle.data_send is undefined."); // Debugging statement
