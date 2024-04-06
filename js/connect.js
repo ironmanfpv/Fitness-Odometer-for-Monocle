@@ -173,7 +173,7 @@ async function sendDistanceData() {
         // Check if formattedDistance is available in tracker.js
         if (typeof distanceBox.textContent !== 'undefined') {
             console.log("Distance to be sent:", distanceBox.textContent); // Debugging statement
-            myMonocle.data_send(distanceBox.textContent);
+            myMonocle.repl(distanceBox.textContent);
         } else {
             console.log("distanceBox.textContent is undefined or empty."); // Debugging statement
         }
