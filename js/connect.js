@@ -211,6 +211,7 @@ async function isDisconnected() {
         statusMsg.style.color = "#EE4B2B";
         connectBtn.style.visibility = "visible";
         document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+        document.getElementById('TransmitBtn').style.visibility = 'hidden';
     } else {
         console.log("Monocle is still connected");
     }
