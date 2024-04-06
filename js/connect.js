@@ -19,10 +19,10 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 DisconnectBtn.style.visibility = "hidden";
 
 // Call isConnected() every 2 seconds
-setInterval(isConnected, 2000);
+setInterval(isConnected, 10000);
 
 // Call isDisconnected() every 2 seconds
-setInterval(isDisconnected, 2000);
+setInterval(isDisconnected, 10000);
 
 
 var myMonocle;
@@ -220,3 +220,58 @@ async function isDisconnected() {
         console.log("Monocle is still connected");
     }
 }
+
+
+/********Previous Code *******************/
+
+//Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
+
+
+
+class Bytes {
+    buf = EMPTY;
+    len = 0;
+    lck = false;
+    subarray(pos, len) {
+        if (len > this.len) {
+            throw "Out of bounds";
+        }
+        return this.buf.subarray(pos, pos + len);
+    }
+    write(buf) {
+        if (this.buf.length - this.len < buf.byteLength) {
+            const old = this.buf;
+            this.buf = new Uint8Array(this.len + buf.byteLength);
+            this.buf.set(old);
+        }
+        this.buf.set(buf, this.len);
+        this.len += buf.length;
+    }
+    read(len) {
+        return this.subarray(0, Math.min(this.len, len));
+    }
+    read_lock(len) {
+        this.lck = true;
+        return this.read(len);
+    }
+    advance(len) {
+        this.buf = this.buf.subarray(len);
+        this.len -= len;
+    }
+    advance_unlock(len) {
+        this.lck = false;
+        this.advance(len);
+    }
+}
+function transmit(channel, bytes) {
+    if (bytes.len > 0 && !bytes.lck) {
+        const tmp = bytes.read_lock(MAX_MTU);
+        channel.writeValueWithoutResponse(tmp).then(() => bytes.advance_unlock(tmp.length)).catch(err => {
+            // Unlock, but rethrow
+            bytes.advance_unlock(tmp.length);
+            Promise.reject(err);
+        });
+    }
+} 
+
+
