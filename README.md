@@ -1,5 +1,7 @@
 # Fitness Odometer
-Jogging is a good cardiovascular exercise that many engage in. How long have you ran, how far and at what speed ? This repo explores how to have the metrics on demand.
+Jogging is a good cardiovascular exercise that many engage in. 
+What is the route that you have taken ? How far have you ran? 
+This repo explores how to have the metrics on demand.
 
 This repository is for the tracking module proof of concept for HTML. 🔥
 
