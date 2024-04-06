@@ -132,7 +132,7 @@ async function connect() {
         stop() {
             clearInterval(this.repltask);
             clearInterval(this.datatask);
-            clearInterval(distanceInterval); // Clear distance sending interval when stopping
+            //clearInterval(distanceInterval); // Clear distance sending interval when stopping
         }
     };
     device.ongattserverdisconnected = function () {
@@ -165,7 +165,7 @@ async function connect() {
     await monocle.set_raw(true);
 
     // Start sending distance data periodically
-    //distanceInterval = setInterval(sendDistanceData, 1000); // Adjust interval as needed
+    //distanceInterval = setInterval(sendDistanceData, 2000); // Adjust interval as needed
 
     myMonocle = monocle;
     return monocle;
