@@ -15,7 +15,7 @@ const DECODER = new TextDecoder();
 const statusMsg = document.getElementById('status');
 const connectBtn = document.getElementById('connectBtn');
 const DisconnectBtn = document.getElementById('DisconnectBtn');
-
+//The Disconnect Button is by default hidden
 DisconnectBtn.style.visibility = "hidden";
 
 // Call isConnected() every 3 seconds
@@ -25,7 +25,7 @@ setInterval(isConnected, 3000);
 setInterval(isDisconnected, 3000);
 
 // Start sending distance data periodically
-distanceInterval = setInterval(sendDistanceData, 2000); // Adjust interval as needed
+setInterval(sendDistanceData, 2000); 
 
 
 var myMonocle;
@@ -184,8 +184,7 @@ async function sendDistanceData() {
 
 async function disconnected() {
     console.log('Device disconnected');
-    // Added simple logic to handle disconnection here, such as notifying the user or attempting to reconnect.
-    // For example:
+    // Added logic to handle actions upon disconnection.
     statusMsg.innerHTML = "Monocle is Disconnected";
     statusMsg.style.color = "#EE4B2B";
     connectBtn.style.visibility = "visible";
