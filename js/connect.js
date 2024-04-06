@@ -18,6 +18,13 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 
 DisconnectBtn.style.visibility = "hidden";
 
+// Call isConnected() every 2 seconds
+setInterval(isConnected, 2000);
+
+// Call isDisconnected() every 2 seconds
+setInterval(isDisconnected, 2000);
+
+
 var myMonocle;
 var distanceInterval; // Variable to hold the interval for sending distance data
 
@@ -44,7 +51,6 @@ async function connect() {
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
         document.getElementById('DisconnectBtn').style.visibility = 'visible';
-        myMonocle.display.clear();
     }
 
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
@@ -154,6 +160,12 @@ async function connect() {
     // Start sending distance data periodically
     distanceInterval = setInterval(sendDistanceData, 1000); // Adjust interval as needed
 
+    // Call isConnected() every 5 seconds
+    //setInterval(isConnected, 2000);
+
+    // Call isDisconnected() every 5 seconds
+    //setInterval(isDisconnected, 2000);
+
     myMonocle = monocle;
     return monocle;
 }
@@ -181,4 +193,30 @@ async function disconnected() {
     statusMsg.style.color = "#EE4B2B";
     connectBtn.style.visibility = "visible";
     document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+}
+
+// Function to constantly check if the Bluetooth device is connected
+async function isConnected() {
+    if (myMonocle && myMonocle.server && myMonocle.server.connected) {
+        console.log("Monocle is connected");
+        statusMsg.innerHTML = "Monocle is Connected";
+        statusMsg.style.color = "#00CC00";
+        connectBtn.style.visibility = "hidden";
+        document.getElementById('DisconnectBtn').style.visibility = 'visible';
+    } else {
+        console.log("Monocle is not connected");
+    }
+}
+
+// Function to constantly check if the Bluetooth device is disconnected
+async function isDisconnected() {
+    if (myMonocle && myMonocle.server && !myMonocle.server.connected) {
+        console.log("Monocle is disconnected");
+        statusMsg.innerHTML = "Monocle is Disconnected";
+        statusMsg.style.color = "#EE4B2B";
+        connectBtn.style.visibility = "visible";
+        document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+    } else {
+        console.log("Monocle is still connected");
+    }
 }
