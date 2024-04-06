@@ -18,11 +18,14 @@ const DisconnectBtn = document.getElementById('DisconnectBtn');
 
 DisconnectBtn.style.visibility = "hidden";
 
-// Call isConnected() every 2 seconds
-setInterval(isConnected, 10000);
+// Call isConnected() every 3 seconds
+setInterval(isConnected, 3000);
 
-// Call isDisconnected() every 2 seconds
-setInterval(isDisconnected, 10000);
+// Call isDisconnected() every 3 seconds
+setInterval(isDisconnected, 3000);
+
+// Start sending distance data periodically
+distanceInterval = setInterval(sendDistanceData, 2000); // Adjust interval as needed
 
 
 var myMonocle;
@@ -158,13 +161,7 @@ async function connect() {
     await monocle.set_raw(true);
 
     // Start sending distance data periodically
-    distanceInterval = setInterval(sendDistanceData, 1000); // Adjust interval as needed
-
-    // Call isConnected() every 5 seconds
-    //setInterval(isConnected, 2000);
-
-    // Call isDisconnected() every 5 seconds
-    //setInterval(isDisconnected, 2000);
+    //distanceInterval = setInterval(sendDistanceData, 1000); // Adjust interval as needed
 
     myMonocle = monocle;
     return monocle;
