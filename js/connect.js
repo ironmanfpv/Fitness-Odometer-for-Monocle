@@ -156,7 +156,6 @@ async function connect() {
 
     myMonocle = monocle;
     return monocle;
-    
 }
 
 // Function to send distance data
@@ -164,16 +163,19 @@ async function sendDistanceData() {
     if (myMonocle && myMonocle.data_send) {
         // Check if formattedDistance is available in tracker.js
         if (typeof distanceBox.textContent !== 'undefined') {
-            //myMonocle.display.clear();
+            console.log("Distance to be sent:", distanceBox.textContent); // Debugging statement
             myMonocle.data_send(distanceBox.textContent);
+        } else {
+            console.log("distanceBox.textContent is undefined or empty."); // Debugging statement
         }
+    } else {
+        console.log("myMonocle or myMonocle.data_send is undefined."); // Debugging statement
     }
 }
 
-
 async function disconnected() {
     console.log('Device disconnected');
-    // Add your logic to handle disconnection here, such as notifying the user or attempting to reconnect.
+    // Added simple logic to handle disconnection here, such as notifying the user or attempting to reconnect.
     // For example:
     statusMsg.innerHTML = "Monocle is Disconnected";
     statusMsg.style.color = "#EE4B2B";
