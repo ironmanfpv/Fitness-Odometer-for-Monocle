@@ -15,6 +15,7 @@ const DECODER = new TextDecoder();
 const statusMsg = document.getElementById('status');
 const connectBtn = document.getElementById('connectBtn');
 const DisconnectBtn = document.getElementById('DisconnectBtn');
+const TransmitBtn = document.getElementById('TransmitBtn');
 //The Disconnect Button is by default hidden
 DisconnectBtn.style.visibility = "hidden";
 
@@ -55,6 +56,7 @@ async function connect() {
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
         document.getElementById('DisconnectBtn').style.visibility = 'visible';
+        document.getElementById('TransmitBtn').style.visibility = 'visible';
     }
 
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
@@ -168,28 +170,22 @@ async function connect() {
     return monocle;
 }
 
-// Function to send distance data
-async function sendDistanceData() {
-    if (myMonocle && myMonocle.data_send) {
-        // Check if distanceBox.textContent is available in tracker.js
-        if (typeof distanceBox.textContent!== 'undefined') {
-            console.log("Distance to be sent:", distanceBox.textContent); // Debugging statement
-            myMonocle.repl(distanceBox.textContent);
-        } else {
-            console.log("distanceBox.textContent is undefined or empty."); // Debugging statement
-        }
-    } else {
-        console.log("myMonocle or myMonocle.data_send is undefined."); // Debugging statement
-    }
+/*** 
+var jsonData;
+async function getJSON() {
+    var notesData = document.getElementById("distance-box");
 }
+***/
 
-async function disconnected() {
+
+async function disconnect() {
     console.log('Device disconnected');
     // Added logic to handle actions upon disconnection.
     statusMsg.innerHTML = "Monocle is Disconnected";
     statusMsg.style.color = "#EE4B2B";
     connectBtn.style.visibility = "visible";
     document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+    document.getElementById('TransmitBtn').style.visibility = 'hidden';
 }
 
 // Function to constantly check if the Bluetooth device is connected
@@ -200,6 +196,7 @@ async function isConnected() {
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
         document.getElementById('DisconnectBtn').style.visibility = 'visible';
+        document.getElementById('TransmitBtn').style.visibility = 'visible';
     } else {
         console.log("Monocle is not connected");
     }

@@ -15,10 +15,23 @@ const DECODER = new TextDecoder();
 const statusMsg = document.getElementById('status');
 const connectBtn = document.getElementById('connectBtn');
 const DisconnectBtn = document.getElementById('DisconnectBtn');
-
+//The Disconnect Button is by default hidden
 DisconnectBtn.style.visibility = "hidden";
 
-var myMonocle
+
+// Call isConnected() every 3 seconds
+setInterval(isConnected, 3000);
+
+// Call isDisconnected() every 3 seconds
+setInterval(isDisconnected, 3000);
+
+// Start sending distance data periodically
+setInterval(sendDistanceData, 2000); 
+
+
+var myMonocle;
+var distanceInterval; // Variable to hold the interval for sending distance data
+
 async function connect() {
     var _device$gatt;
     if (!navigator.bluetooth) {
@@ -28,16 +41,14 @@ async function connect() {
     if (/iPhone|iPad/.test(navigator.userAgent)) {
         device = await navigator.bluetooth.requestDevice({
             acceptAllDevices: true
-        })
-        
-    } 
-        else {
+        });
+    } else {
         device = await navigator.bluetooth.requestDevice({
             filters: [{
                 services: [replDataServiceUuid]
             }, {
                 services: [nordicDfuServiceUuid]
-                }],
+            }],
             optionalServices: [rawDataServiceUuid]
         });
         statusMsg.innerHTML = "Monocle is Connected";
@@ -45,12 +56,12 @@ async function connect() {
         connectBtn.style.visibility = "hidden";
         document.getElementById('DisconnectBtn').style.visibility = 'visible';
     }
-    
+
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
     if (!server) {
         throw "Bluetooth service undefined";
     }
-    const dfu = await (server === null || server === void 0 ? void 0 : server.getPrimaryService(nordicDfuServiceUuid).catch(() => { }));
+    const dfu = await (server === null || server === void 0 ? void 0 : server.getPrimaryService(nordicDfuServiceUuid).catch(() => {}));
     if (dfu) {
         const dfuctr = await dfu.getCharacteristic(nordicDfuControlCharacteristicUUID);
         const dfupkt = await dfu.getCharacteristic(nordicDfuPacketCharacteristicUUID);
@@ -63,15 +74,14 @@ async function connect() {
         };
         device.ongattserverdisconnected = function () {
             if (monocle.disconnected) monocle.disconnected();
-               
         };
         dfu.oncharacteristicvaluechanged = function (ev) {
             console.log("Dfu ", ev);
         };
-        myMonocle = monocle
+        myMonocle = monocle;
         return monocle;
     }
-    
+
     const repl = await server.getPrimaryService(replDataServiceUuid);
     const data = await server.getPrimaryService(rawDataServiceUuid);
     const replrx = await repl.getCharacteristic(replRxCharacteristicUuid);
@@ -119,6 +129,7 @@ async function connect() {
         stop() {
             clearInterval(this.repltask);
             clearInterval(this.datatask);
+            clearInterval(distanceInterval); // Clear distance sending interval when stopping
         }
     };
     device.ongattserverdisconnected = function () {
@@ -149,38 +160,77 @@ async function connect() {
     await repltx.startNotifications();
     await datatx.startNotifications();
     await monocle.set_raw(true);
-    myMonocle = monocle
+
+    // Start sending distance data periodically
+    //distanceInterval = setInterval(sendDistanceData, 1000); // Adjust interval as needed
+
+    myMonocle = monocle;
     return monocle;
-    
 }
 
+/*** 
+var jsonData;
+async function getJSON() {
+    var notesData = document.getElementById("distance-box");
+}
+***/
 
-async function disconnected(){
+// Function to send distance data
+async function sendDistanceData() {
+    if (myMonocle && myMonocle.data_send) {
+        // Check if distanceBox.textContent is available in tracker.js
+        if (typeof distanceBox.textContent !== 'undefined') {
+            console.log("Distance to be sent:", distanceBox.textContent); // Debugging statement
+            myMonocle.repl(distanceBox.textContent);
+        } else {
+            console.log("distanceBox.textContent is undefined or empty."); // Debugging statement
+        }
+    } else {
+        console.log("myMonocle or myMonocle.data_send is undefined."); // Debugging statement
+    }
+}
+
+async function disconnect() {
     console.log('Device disconnected');
-    // Add your logic to handle disconnection here, such as notifying the user or attempting to reconnect.
-    // For example:
+    // Added logic to handle actions upon disconnection.
     statusMsg.innerHTML = "Monocle is Disconnected";
     statusMsg.style.color = "#EE4B2B";
     connectBtn.style.visibility = "visible";
     document.getElementById('DisconnectBtn').style.visibility = 'hidden';
 }
 
+// Function to constantly check if the Bluetooth device is connected
+async function isConnected() {
+    if (myMonocle && myMonocle.server && myMonocle.server.connected) {
+        console.log("Monocle is connected");
+        statusMsg.innerHTML = "Monocle is Connected";
+        statusMsg.style.color = "#00CC00";
+        connectBtn.style.visibility = "hidden";
+        document.getElementById('DisconnectBtn').style.visibility = 'visible';
+    } else {
+        console.log("Monocle is not connected");
+    }
+}
 
-
-
-
-
-
-
-
-
+// Function to constantly check if the Bluetooth device is disconnected
+async function isDisconnected() {
+    if (myMonocle && myMonocle.server && !myMonocle.server.connected) {
+        console.log("Monocle is disconnected");
+        statusMsg.innerHTML = "Monocle is Disconnected";
+        statusMsg.style.color = "#EE4B2B";
+        connectBtn.style.visibility = "visible";
+        document.getElementById('DisconnectBtn').style.visibility = 'hidden';
+    } else {
+        console.log("Monocle is still connected");
+    }
+}
 
 
 /********Previous Code *******************/
 
 //Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
 
-/*
+
 
 class Bytes {
     buf = EMPTY;
@@ -228,4 +278,4 @@ function transmit(channel, bytes) {
     }
 } 
 
-*/
+
