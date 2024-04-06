@@ -44,6 +44,7 @@ async function connect() {
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
         document.getElementById('DisconnectBtn').style.visibility = 'visible';
+        myMonocle.display.clear();
     }
 
     const server = await ((_device$gatt = device.gatt) === null || _device$gatt === void 0 ? void 0 : _device$gatt.connect());
@@ -157,12 +158,12 @@ async function connect() {
     return monocle;
 
     // Function to send distance data
-    function sendDistanceData() {
+async function sendDistanceData() {
         if (myMonocle && myMonocle.data_send) {
             // Check if formattedDistance is available in tracker.js
-            if (typeof formattedDistance !== 'undefined') {
-                myMonocle.display.clear();
-                myMonocle.data_send(formattedDistance);
+            if (typeof distanceBox.textContent !== 'undefined') {
+                //myMonocle.display.clear();
+                myMonocle.data_send(distanceBox.textContent);
             }
         }
     }
