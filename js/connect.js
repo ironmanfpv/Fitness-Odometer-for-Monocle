@@ -16,9 +16,10 @@ const statusMsg = document.getElementById('status');
 const connectBtn = document.getElementById('connectBtn');
 const DisconnectBtn = document.getElementById('DisconnectBtn');
 const TransmitBtn = document.getElementById('TransmitBtn');
-//The Disconnect Button is by default hidden
-DisconnectBtn.style.visibility = "hidden";
 
+//The Disconnect and Transmit Button is by default hidden
+DisconnectBtn.style.visibility = "hidden";
+TransmitBtn.style.visibility = "hidden";
 
 // Call isConnected() every 3 seconds
 setInterval(isConnected, 3000);
