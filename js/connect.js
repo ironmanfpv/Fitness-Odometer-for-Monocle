@@ -21,10 +21,10 @@ const TransmitBtn = document.getElementById('TransmitBtn');
 DisconnectBtn.style.visibility = "hidden";
 TransmitBtn.style.visibility = "hidden";
 
-// Call isConnected() every 3 seconds
+// Call isConnected() to check for BLE connection every 3 seconds
 setInterval(isConnected, 3000);
 
-// Call isDisconnected() every 3 seconds
+// Call isDisconnected() to check if BLE device is disconnected every 3 seconds
 setInterval(isDisconnected, 3000);
 
 // Start sending distance data periodically
