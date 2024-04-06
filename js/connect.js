@@ -156,18 +156,20 @@ async function connect() {
 
     myMonocle = monocle;
     return monocle;
+    
+}
 
-    // Function to send distance data
+// Function to send distance data
 async function sendDistanceData() {
-        if (myMonocle && myMonocle.data_send) {
-            // Check if formattedDistance is available in tracker.js
-            if (typeof distanceBox.textContent !== 'undefined') {
-                //myMonocle.display.clear();
-                myMonocle.data_send(distanceBox.textContent);
-            }
+    if (myMonocle && myMonocle.data_send) {
+        // Check if formattedDistance is available in tracker.js
+        if (typeof distanceBox.textContent !== 'undefined') {
+            //myMonocle.display.clear();
+            myMonocle.data_send(distanceBox.textContent);
         }
     }
 }
+
 
 async function disconnected() {
     console.log('Device disconnected');
