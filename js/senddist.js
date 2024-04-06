@@ -1,5 +1,7 @@
 // Function to send distance data
 
+setInterval(sendDistanceData, 2000);
+
 async function sendDistanceData(){
     if (myMonocle && myMonocle.data_send) {
         // Check if distanceBox.textContent is available in tracker.js

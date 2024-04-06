@@ -28,7 +28,7 @@ setInterval(isConnected, 3000);
 setInterval(isDisconnected, 3000);
 
 // Start sending distance data periodically
-setInterval(sendDistanceData, 2000); 
+//setInterval(sendDistanceData, 2000); 
 
 
 var myMonocle;
