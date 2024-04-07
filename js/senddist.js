@@ -1,6 +1,6 @@
 // Function to send distance data
 
-myMonocle.repl('import display; display.show(display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER))\n');
+//myMonocle.repl('import display; display.show(display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER))\n');
 
 setInterval(sendDistanceData, 3000);
 

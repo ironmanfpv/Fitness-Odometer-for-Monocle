@@ -188,6 +188,7 @@ async function isConnected() {
         connectBtn.style.visibility = "hidden";
         document.getElementById('DisconnectBtn').style.visibility = 'visible';
         document.getElementById('TransmitBtn').style.visibility = 'visible';
+        myMonocle.repl('import display; display.show(display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER))\n');
     } else {
         console.log("Monocle is not connected");
     }
