@@ -1,6 +1,6 @@
 // Function to send distance data
 
-setInterval(sendDistanceData, 2000);
+setInterval(sendDistanceData, 3000);
 
 async function sendDistanceData(){
 
