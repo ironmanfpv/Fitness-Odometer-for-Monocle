@@ -1,6 +1,6 @@
 // Function to send distance data
 
-setInterval(sendDistanceData, 3000);
+setInterval(sendDistanceData, 2000);
 
 async function sendDistanceData(){
 
@@ -11,8 +11,8 @@ async function sendDistanceData(){
                 Data = distanceBox.textContent
                 myMonocle.repl('import display; display.clear()\n');                                      //clears the rainbow test
                 myMonocle.repl('import led; led.on(led.GREEN)\n');                                        //Checks if code reach into this line
+                myMonocle.repl('import display; display.show(display.Text("' + Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
                 //myMonocle.repl('import display; display.show(display.Text("' + Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
-                myMonocle.repl('import display; display.show(display.Text( "Dist'+'='+ Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.LEFT_CENTER))\n');
                 //myMonocle.repl('import display; t1 = display.Text("Total Distance", 0, 100, display.WHITE, justify=display.TOP_LEFT), t2 = display.Text("' + Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER), display.show(t1, t2)');
                 
                 //myMonocle.repl(`
