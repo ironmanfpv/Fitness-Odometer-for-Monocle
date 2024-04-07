@@ -165,7 +165,7 @@ async function connect() {
     return monocle;
 }
 
-// Function to manually disconnect Monocle, Yet to be completed
+// Function to manually disconnect Monocle, Yet to be completed.
 async function disconnect() {
     //console.log('Device disconnected');                                 //debugging statement
     // Added logic to handle actions upon disconnection.
@@ -204,7 +204,7 @@ async function isDisconnected() {
     }
 }
 
-/********Previous Code *******************/
+/**********************************Bytes and Data******************************************/
 
 //Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
 
