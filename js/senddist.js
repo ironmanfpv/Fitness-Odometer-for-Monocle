@@ -8,7 +8,7 @@ async function sendDistanceData(){
         if (myMonocle && myMonocle.data_send) {
             
             if (typeof distanceBox.textContent !== 'undefined' && distanceBox.textContent.trim() !== ''){ // Check if distanceBox.textContent is available in tracker.js
-                Data = distanceBox.textContent
+                Data = distanceBox.textContent;
                 //myMonocle.repl('import display; display.clear()\n');                                      //clears the rainbow test
                 //myMonocle.repl('import led; led.on(led.GREEN)\n');                                        //Checks if code reach into this line
                 myMonocle.repl('import display; display.show(display.Text("' + Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
