@@ -13,10 +13,7 @@ async function sendDistanceData(){
                 myMonocle.repl('import led; led.on(led.GREEN)\n');                                        //Checks if code reach into this line
                 //myMonocle.repl('import display; display.show(display.Text("' + Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
 
-                myMonocle.repl(
-                    'import display; display.show(display.Text("Total Distance Covered", 0, 100, display.WHITE, justify=display.TOP_LEFT))\n' +
-                    'import display; display.show(display.Text("' + Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n'
-                );
+                myMonocle.repl('import display; t1 = display.Text("Total Distance Covered", 0, 100, display.WHITE, justify=display.TOP_LEFT) , t2 = display.Text("' + Data + ' ' +' KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER), display.show(t1, t2)');
                 
                 //myMonocle.repl(`
                   //            import display;
