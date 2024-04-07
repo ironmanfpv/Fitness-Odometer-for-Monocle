@@ -150,7 +150,7 @@ async function connect() {
                 repl_str = '';
             }
         } else {
-            //if (monocle.repl_cb) monocle.repl_cb(DECODER.decode(target.value));
+            if (monocle.repl_cb) monocle.repl_cb(DECODER.decode(target.value));
         }
     };
     datatx.oncharacteristicvaluechanged = event => {
