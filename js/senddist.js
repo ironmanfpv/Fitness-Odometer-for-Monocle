@@ -23,9 +23,9 @@ async function sendDistanceData(){
                           //`);
 
                 
-                myMonocle.repl('display.show(\n');
-                myMonocle.repl('display.Text("Total Distance", 0 , 100, display.WHITE, justify=display.TOP_LEFT),\n');
-                myMonocle.repl('display.Text("' + Data + ' ' +'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER)\n');
+                myMonocle.repl('display.show(\n')
+                myMonocle.repl('display.Text("Total Distance", 0 , 100, display.WHITE, justify=display.TOP_LEFT),\n')
+                myMonocle.repl('display.Text("' + Data + ' ' +'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER)\n')
                 myMonocle.repl(')\n');
                 
                 
