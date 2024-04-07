@@ -4,11 +4,6 @@ setInterval(sendDistanceData, 3000);
 
 async function sendDistanceData(){
 
-    //setInterval(sendDistanceData, 3000);                    // Line for repeat call to be within function
-    //myMonocle.repl('import display; display.clear()');      // Line for clear display to be within function
-
-    //myMonocle.repl('import display; display.show(display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER))\n');
-
     try {
         if (myMonocle && myMonocle.data_send) {
             
@@ -16,13 +11,14 @@ async function sendDistanceData(){
                 Data = distanceBox.textContent
                 myMonocle.repl('import display; display.clear()\n');                                      //clears the rainbow test
                 myMonocle.repl('import led; led.on(led.GREEN)\n');                                        //Checks if code reach into this line
+                myMonocle.repl('import display; display.show(display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
                 
-                myMonocle.repl(`
-                              import display;
-                              t1 = display.Text("Total Distance Covered", 20, 100, display.WHITE, justify=display.TOP_LEFT);
-                              t2 = display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER);
-                              display.show(t1, t2);
-                          `);
+                //myMonocle.repl(`
+                  //            import display;
+                    //          t1 = display.Text("Total Distance Covered", 20, 100, display.WHITE, justify=display.TOP_LEFT);
+                      //        t2 = display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER);
+                        //      display.show(t1, t2);
+                          //`);
 
 
 
@@ -32,20 +28,9 @@ async function sendDistanceData(){
                 //myMonocle.repl(')\n');
                 
                 
-                
-                
-                
-                
                 //myMonocle.repl('import display; display.show(display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
-                
-                
-                
-                //myMonocle.repl('import display; display.show(display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER))\n');
-                //myMonocle.repl('import display; display.show(display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
+               
                 //myMonocle.repl('import utime; time.sleep(1.0)\n');
-                //myMonocle.repl('import display; line = display.Line(175, 230, 465, 230, display.WHITE)\x04');
-                //myMonocle.repl('import display; display.show(text,line)\x04');
-                //myMonocle.repl('import device; import display; display.show(device.battery_level())');
                 //console.log("Distance to be sent:", distanceBox.textContent);                                             // Debugging statement
                 //myMonocle.repl('import display; display.show(display.Text("' + distanceBox.textContent + 'KM"))\x04');    // Print w/o format
             } else {

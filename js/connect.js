@@ -27,8 +27,6 @@ setInterval(isConnected, 3000);
 // Call isDisconnected() to check if BLE device is disconnected every 3 seconds
 setInterval(isDisconnected, 3000);
 
-// Start sending distance data periodically
-// setInterval(sendDistanceData, 3000); 
 
 
 var myMonocle;
@@ -167,7 +165,6 @@ async function connect() {
     return monocle;
 }
 
-
 // Function to manually disconnect Monocle, Yet to be completed
 async function disconnect() {
     //console.log('Device disconnected');                                 //debugging statement
@@ -188,7 +185,6 @@ async function isConnected() {
         connectBtn.style.visibility = "hidden";
         document.getElementById('DisconnectBtn').style.visibility = 'visible';
         document.getElementById('TransmitBtn').style.visibility = 'visible';
-        //myMonocle.repl('import display; display.show(display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER))\n');
     } else {
         console.log("Monocle is not connected");
     }
@@ -207,57 +203,3 @@ async function isDisconnected() {
         console.log("Monocle is still connected");
     }
 }
-
-
-/********Previous Code *******************/
-
-//Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
-
-
-class Bytes {
-    buf = EMPTY;
-    len = 0;
-    lck = false;
-    subarray(pos, len) {
-        if (len > this.len) {
-            throw "Out of bounds";
-        }
-        return this.buf.subarray(pos, pos + len);
-    }
-    write(buf) {
-        if (this.buf.length - this.len < buf.byteLength) {
-            const old = this.buf;
-            this.buf = new Uint8Array(this.len + buf.byteLength);
-            this.buf.set(old);
-        }
-        this.buf.set(buf, this.len);
-        this.len += buf.length;
-    }
-    read(len) {
-        return this.subarray(0, Math.min(this.len, len));
-    }
-    read_lock(len) {
-        this.lck = true;
-        return this.read(len);
-    }
-    advance(len) {
-        this.buf = this.buf.subarray(len);
-        this.len -= len;
-    }
-    advance_unlock(len) {
-        this.lck = false;
-        this.advance(len);
-    }
-}
-function transmit(channel, bytes) {
-    if (bytes.len > 0 && !bytes.lck) {
-        const tmp = bytes.read_lock(MAX_MTU);
-        channel.writeValueWithoutResponse(tmp).then(() => bytes.advance_unlock(tmp.length)).catch(err => {
-            // Unlock, but rethrow
-            bytes.advance_unlock(tmp.length);
-            Promise.reject(err);
-        });
-    }
-} 
-
-
