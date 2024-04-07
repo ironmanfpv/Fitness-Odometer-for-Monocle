@@ -132,7 +132,6 @@ async function connect() {
         stop() {
             clearInterval(this.repltask);
             clearInterval(this.datatask);
-            //clearInterval(distanceInterval); // Clear distance sending interval when stopping
         }
     };
     device.ongattserverdisconnected = function () {
@@ -164,23 +163,14 @@ async function connect() {
     await datatx.startNotifications();
     await monocle.set_raw(true);
 
-    // Start sending distance data periodically
-    //distanceInterval = setInterval(sendDistanceData, 2000); // Adjust interval as needed
-
     myMonocle = monocle;
     return monocle;
 }
 
-/*** 
-var jsonData;
-async function getJSON() {
-    var notesData = document.getElementById("distance-box");
-}
-***/
 
-
+// Function to manually disconnect Monocle, Yet to be completed
 async function disconnect() {
-    console.log('Device disconnected');
+    //console.log('Device disconnected');                                 //debugging statement
     // Added logic to handle actions upon disconnection.
     statusMsg.innerHTML = "Monocle is Disconnected";
     statusMsg.style.color = "#EE4B2B";
@@ -192,7 +182,7 @@ async function disconnect() {
 // Function to constantly check if the Bluetooth device is connected
 async function isConnected() {
     if (myMonocle && myMonocle.server && myMonocle.server.connected) {
-        console.log("Monocle is connected");
+        //console.log("Monocle is connected");                            //debugging statement
         statusMsg.innerHTML = "Monocle is Connected";
         statusMsg.style.color = "#00CC00";
         connectBtn.style.visibility = "hidden";
@@ -206,7 +196,7 @@ async function isConnected() {
 // Function to constantly check if the Bluetooth device is disconnected
 async function isDisconnected() {
     if (myMonocle && myMonocle.server && !myMonocle.server.connected) {
-        console.log("Monocle is disconnected");
+        //console.log("Monocle is disconnected");                         //debugging statement
         statusMsg.innerHTML = "Monocle is Disconnected";
         statusMsg.style.color = "#EE4B2B";
         connectBtn.style.visibility = "visible";
@@ -221,7 +211,6 @@ async function isDisconnected() {
 /********Previous Code *******************/
 
 //Data Xfer : Read https://github.com/brilliantlabsAR/monocle-micropython --> communications
-
 
 
 class Bytes {
