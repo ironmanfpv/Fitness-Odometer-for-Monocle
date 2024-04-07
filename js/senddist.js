@@ -42,12 +42,15 @@ async function sendDistanceData(){
         if (myMonocle && myMonocle.data_send) {
             
             if (typeof distanceBox.textContent !== 'undefined' && distanceBox.textContent.trim() !== ''){ // Check if distanceBox.textContent is available in tracker.js
-                myMonocle.repl('import display; display.clear()');
+                myMonocle.repl('import display; display.clear()')
+                text = display.Text('distanceBox.textContent', 320, 200, display.WHITE, justify=display.MIDDLE_CENTER)
+                line = display.Line(175, 230, 465, 230, display.WHITE)
+                myMonocle.repl('import display; display.show(text,line)\x04');
                 //myMonocle.repl('import device; device.battery_level()');
-                myMonocle.repl('import device; import display; display.show(device.battery_level())');
-                myMonocle.repl('import utime; time.sleep(0.5)');
+                //myMonocle.repl('import device; import display; display.show(device.battery_level())');
+                //myMonocle.repl('import utime; time.sleep(0.5)');
                 console.log("Distance to be sent:", distanceBox.textContent);                   // Debugging statement
-                myMonocle.repl('import display; display.show(display.Text("' + distanceBox.textContent + '"))\x04');
+                //myMonocle.repl('import display; display.show(display.Text("' + distanceBox.textContent + 'KM"))\x04');
             } else {
                 console.log("distanceBox.textContent is undefined or empty.");                  // Debugging statement
             }
