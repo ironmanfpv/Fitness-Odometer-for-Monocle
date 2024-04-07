@@ -32,7 +32,7 @@ async function sendDistanceData(){
 
 // Function to send distance data
 
-myMonocle.repl('import display; display.clear()\x04');
+//myMonocle.repl('import display; display.clear()\x04');
 setInterval(sendDistanceData, 3000);
 
 async function sendDistanceData(){
@@ -44,7 +44,7 @@ async function sendDistanceData(){
         if (myMonocle && myMonocle.data_send) {
             
             if (typeof distanceBox.textContent !== 'undefined' && distanceBox.textContent.trim() !== ''){ // Check if distanceBox.textContent is available in tracker.js
-                //myMonocle.repl('import display; display.clear()\x04');
+                myMonocle.repl('import display; display.clear()\x04');
                 myMonocle.repl('import led; led.on(led.GREEN)\x04');
                 //text = display.Text('distanceBox.textContent', 320, 200, display.WHITE, justify=display.MIDDLE_CENTER);
                 //line = display.Line(175, 230, 465, 230, display.WHITE);
