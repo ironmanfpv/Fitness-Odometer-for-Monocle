@@ -1,5 +1,7 @@
 // Function to send distance data
 
+/***
+
 setInterval(sendDistanceData, 3000);
 
 async function sendDistanceData(){
@@ -20,6 +22,40 @@ async function sendDistanceData(){
         }
     } else {
         console.log("myMonocle or myMonocle.data_send is undefined.");                      // Debugging statement
+    }
+}
+
+***/
+
+
+
+
+// Function to send distance data
+
+setInterval(sendDistanceData, 3000);
+
+async function sendDistanceData(){
+
+    //myMonocle.repl('import display; display.clear()');
+
+    try {
+        if (myMonocle && myMonocle.data_send) {
+            
+            if (typeof distanceBox.textContent !== 'undefined' && distanceBox.textContent.trim() !== ''){ // Check if distanceBox.textContent is available in tracker.js
+                myMonocle.repl('import display; display.clear()');
+                //myMonocle.repl('import device; device.battery_level()');
+                myMonocle.repl('import device; import display; display.show(device.battery_level())');
+                myMonocle.repl('import utime; time.sleep(0.5)');
+                console.log("Distance to be sent:", distanceBox.textContent);                   // Debugging statement
+                myMonocle.repl('import display; display.show(display.Text("' + distanceBox.textContent + '"))\x04');
+            } else {
+                console.log("distanceBox.textContent is undefined or empty.");                  // Debugging statement
+            }
+        } else {
+            console.log("myMonocle or myMonocle.data_send is undefined.");                      // Debugging statement
+        }
+    } catch (error) {
+        console.error("Error in sendDistanceData:", error);
     }
 }
 
