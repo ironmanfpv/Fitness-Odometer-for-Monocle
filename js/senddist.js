@@ -42,9 +42,9 @@ async function sendDistanceData(){
         if (myMonocle && myMonocle.data_send) {
             
             if (typeof distanceBox.textContent !== 'undefined' && distanceBox.textContent.trim() !== ''){ // Check if distanceBox.textContent is available in tracker.js
-                myMonocle.repl('import display; display.clear()')
-                text = display.Text('distanceBox.textContent', 320, 200, display.WHITE, justify=display.MIDDLE_CENTER)
-                line = display.Line(175, 230, 465, 230, display.WHITE)
+                myMonocle.repl('import display; display.clear()');
+                text = display.Text('distanceBox.textContent', 320, 200, display.WHITE, justify=display.MIDDLE_CENTER);
+                line = display.Line(175, 230, 465, 230, display.WHITE);
                 myMonocle.repl('import display; display.show(text,line)\x04');
                 //myMonocle.repl('import device; device.battery_level()');
                 //myMonocle.repl('import device; import display; display.show(device.battery_level())');
