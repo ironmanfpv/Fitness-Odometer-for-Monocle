@@ -17,9 +17,9 @@ async function sendDistanceData(){
                 myMonocle.repl('import display; display.clear()\n');                                      //clears the rainbow test
                 myMonocle.repl('import led; led.on(led.GREEN)\n');                                        //Checks if code reach into this line
                 
-                myMonocle.repl('display.show(\n')
-                myMonocle.repl('display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER),\n')
-                myMonocle.repl('display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER)\n')
+                myMonocle.repl('display.show(\n');
+                myMonocle.repl('display.Text("Total Distance Covered", 220, 100, display.WHITE, justify=display.MIDDLE_CENTER),\n');
+                myMonocle.repl('display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER)\n');
                 myMonocle.repl(')\n');
                 
                 
