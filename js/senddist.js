@@ -10,7 +10,9 @@ async function sendDistanceData(){
         
         if (typeof distanceBox.textContent !== 'undefined'){ // Check if distanceBox.textContent is available in tracker.js
             myMonocle.repl('import display; display.clear()');
-            myMonocle.repl('import utime; time.sleep(0.5)');
+            myMonocle.repl('import device; device.battery_level()');
+            myMonocle.repl('import device; import display; display.show(device.battery_level()');
+            //myMonocle.repl('import utime; time.sleep(0.5)');
             //console.log("Distance to be sent:", distanceBox.textContent);                   // Debugging statement
             myMonocle.repl('import display; display.show(display.Text("' + distanceBox.textContent + '"))\x04');
         } else {
