@@ -12,10 +12,10 @@ async function sendDistanceData(){
             
             if (typeof distanceBox.textContent !== 'undefined' && distanceBox.textContent.trim() !== ''){ // Check if distanceBox.textContent is available in tracker.js
                 Data = distanceBox.textContent
-                myMonocle.repl('import display; display.clear()\x04');
-                myMonocle.repl('import led; led.on(led.GREEN)\x04');    //Checks if code reach into this line
-                myMonocle.repl('import display; display.show(display.Text("' + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\x04');
-                myMonocle.repl('import utime; time.sleep(1.5)\x04');
+                myMonocle.repl('import display; display.clear()\n');
+                myMonocle.repl('import led; led.on(led.GREEN)\n');    //Checks if code reach into this line
+                myMonocle.repl('import display; display.show(display.Text("' + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\n');
+                myMonocle.repl('import utime; time.sleep(1.5)\n');
                 //myMonocle.repl('import display; line = display.Line(175, 230, 465, 230, display.WHITE)\x04');
                 //myMonocle.repl('import display; display.show(text,line)\x04');
                 //myMonocle.repl('import device; device.battery_level()');
