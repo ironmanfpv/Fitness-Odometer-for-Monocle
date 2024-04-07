@@ -171,6 +171,5 @@ const calculateDelta = (track) => {
 const round = (num, places) => {
 	return +(parseFloat(num).toFixed(places));
 }
-
 document.querySelector("#tracker")
   .addEventListener("GEO_EVENT", updateMap);

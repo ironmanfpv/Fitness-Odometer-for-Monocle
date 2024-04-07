@@ -8,16 +8,23 @@ This repository is for the tracking module proof of concept for HTML. 🔥
 ## To run the web app
 
 - Access https://ironmanfpv.github.io/Fitness-Odometer-for-Monocle/index.html in browser.
+- The web app can be used independently.
 - If you fail to load the app, check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility).
 
 - The app requires your permission to retrieve your geolocation.
 - No geolocation is collected and sent to any server.
 
+## To have Odometer via Monocle
+
+- Works with iPhone and Bluefly.
+- Hit the Connect! button and select Monocle from the list of BLE device that appears in the list.
+- HIt the Transmission button and the distance information will be displayed on your Monocle. 
+
 ## Development
 
 - The app relies on Mozilla Web Geolocation API.
 - Latitude and longitude are the only information available through the API.
-- Currently a proof of concept for Geolocation
+- Currently a [proof of concept]() for Geolocation, and successful integration with Monocle.
 
 ---
 
