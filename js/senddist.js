@@ -32,8 +32,9 @@ async function sendDistanceData(){
 
 // Function to send distance data
 
+
 //myMonocle.repl('import display; display.clear()\x04');
-//setInterval(sendDistanceData, 3000);
+setInterval(sendDistanceData, 10000);
 
 async function sendDistanceData(){
 
