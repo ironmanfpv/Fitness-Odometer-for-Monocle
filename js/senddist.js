@@ -48,7 +48,8 @@ async function sendDistanceData(){
                 myMonocle.repl('import display; display.clear()\x04');
                 myMonocle.repl('import led; led.on(led.GREEN)\x04');
                 //myMonocle.repl('import display; display.Text("Hello", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER)\x04');
-                myMonocle.repl('import display; display.show(display.Text("Hello", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\x04');
+                //myMonocle.repl('import display; display.show(display.Text("Hello", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\x04');
+                myMonocle.repl('import display; display.show(display.Text("distanceBox.textContent", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER))\x04');
                 //myMonocle.repl('import display; line = display.Line(175, 230, 465, 230, display.WHITE)\x04');
                 //myMonocle.repl('import display; display.show(text,line)\x04');
                 //myMonocle.repl('import device; device.battery_level()');
