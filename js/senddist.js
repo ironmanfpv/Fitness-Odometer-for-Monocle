@@ -19,8 +19,8 @@ async function sendDistanceData(){
                 
                 myMonocle.repl(`
                               import display;
-                              t1 = display.Text("Total Distance Covered", 20, 100, display.WHITE, display.TOP_LEFT);
-                              t2 = display.Text('${Data} KM', 320, 200, display.WHITE, display.MIDDLE_CENTER);
+                              t1 = display.Text("Total Distance Covered", 20, 100, display.WHITE, justify=display.TOP_LEFT);
+                              t2 = display.Text("' = + Data + 'KM", 320, 200, display.WHITE, justify=display.MIDDLE_CENTER);
                               display.show(t1, t2);
                           `);
 
