@@ -1,7 +1,7 @@
 # Fitness Odometer for Monocle
 
 Jogging is a good cardiovascular exercise that many engage in. </br>
-What is the route that one have taken ? How far have you ran? </br> 
+What is the route taken ? How far have you walked or jog ? </br> 
 This repo explores how to have the metrics on demand and visually.</br>
 
 Initially started as an idea, this repository is a completed proof of concept for HTML & Monocle. 🔥
@@ -14,22 +14,23 @@ Initially started as an idea, this repository is a completed proof of concept fo
 - Access https://ironmanfpv.github.io/Fitness-Odometer-for-Monocle/index.html in browser.
 - The web app can be used independently on the iPhone, with and without Monocle.
 - If you fail to load the app, check the [browser compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility).
-
-- The app requires your permission to retrieve your geolocation.
-- No geolocation is collected and sent to any server.
+- Slide the button on the bottom left of the page to initiate Odometer.
+- The app requires your permission to mark your geolocation and start mapping the route you take.
+- At the end of the use, slide the button to the left to stop Odometer. Close the browser tab.
+- No geolocation is collected or sent to any server.
 
 ## To connect web app to Monocle
 
 - By connecting web app to Monocle, visual Odometer is available.
-- Works with iPhone and Bluefly; a BLE enabled browser.
+- Works with iPhone and Bluefy; a BLE enabled browser.
 - Hit the Connect! button and select Monocle from the list of BLE device that appears in the list.
-- HIt the Transmission button and the distance information will be displayed on your Monocle. 
+- Hit the Transmission button and the distance information will be displayed on your Monocle. 
 
 ## Development
 
 - The app relies on Mozilla Web Geolocation API.
 - Latitude and longitude are the only information available through the API.
-- Currently a proof of concept for Geolocation, and successful integration with Monocle.
+- Currently a proof of concept for Geolocation, it successfully integrates with Monocle.
 
 ---
 
