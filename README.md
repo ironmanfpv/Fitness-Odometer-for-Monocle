@@ -38,4 +38,4 @@ If you are interested in my other projects, please search google: Github ironman
 
 Email me @ akitaishi@gmail.com 👋
 
-Linkedin: www.linkedin.com/in/jason-ng-b515a89z  🌍
+Linkedin: www.linkedin.com/in/jason-n-b515a89a  🌍
